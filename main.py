@@ -21,11 +21,11 @@ class Grid:
         for bomb in range(0, self.bombs):
             locationX = random.randint(0, self.size-1)
             locationY = random.randint(0, self.size-1)
-            print(locationY)
-            print(locationX)
+            #print(locationY)
+            #print(locationX)
             self.rows[0-locationY].pop(locationX)
             self.rows[0-locationY].insert(locationX, " - ")
-            print("Bomb at: ({},{})".format(locationX+1, locationY))
+            #print("Bomb at: ({},{})".format(locationX+1, locationY))
 
     def updateGrid(self):
         pass
@@ -40,18 +40,35 @@ class Grid:
 
 
 
+def print_display_grid(row_list):
+    rowStr = ""
+    for row in row_list:
+        joinedRow = "".join(row)
+        rowStr += joinedRow
+        rowStr += "\n"
+    print(rowStr)
 
 
-size_input = input("What size of game?: ")
-bomb_input = input("How many bombs?: ")
+#size_input = input("What size of game?: ")
+#bomb_input = input("How many bombs?: ")
+
+size_input = 10
+bomb_input = 20
 
 user_grid = Grid(int(size_input),int(bomb_input))
-display_grid = user_grid.rows
+display_grid = []
 
+display_grid = user_grid.rows.copy()
 
+print(display_grid)
+
+print_display_grid(display_grid)
 
 user_grid.place_bomb()
 
 print(display_grid)
 
-print(user_grid)
+print_display_grid(display_grid)
+
+
+#print(user_grid)

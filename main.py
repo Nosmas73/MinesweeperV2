@@ -24,8 +24,11 @@ class Grid:
             print(locationY)
             print(locationX)
             self.rows[0-locationY].pop(locationX)
-            self.rows[0-locationY].insert(locationX," - ")
-            print("Bomb at: ({},{})".format(locationX+1,locationY))
+            self.rows[0-locationY].insert(locationX, " - ")
+            print("Bomb at: ({},{})".format(locationX+1, locationY))
+
+    def updateGrid(self):
+        pass
 
     def __repr__(self):
         rowStr = ""
@@ -39,18 +42,16 @@ class Grid:
 
 
 
+size_input = input("What size of game?: ")
+bomb_input = input("How many bombs?: ")
+
+user_grid = Grid(int(size_input),int(bomb_input))
+display_grid = user_grid.rows
 
 
 
+user_grid.place_bomb()
 
-new_grid = Grid(5,5)
-huge_grid = Grid(10,5)
+print(display_grid)
 
-
-#new_grid.getGrid()
-#print(new_grid)
-
-#huge_grid.getGrid()
-print(huge_grid)
-huge_grid.place_bomb()
-print(huge_grid)
+print(user_grid)
